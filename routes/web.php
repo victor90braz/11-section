@@ -8,24 +8,19 @@
     use MailchimpMarketing\ApiClient;
 
     Route::get('/ping', function () {
-        // Create an instance of the Mailchimp API client
-        $client = new ApiClient();
-        $client->setConfig([
+
+        $mainchimp = new ApiClient();
+        $mainchimp->setConfig([
             'apiKey' => config('services.mailchimp.key'),
             'server' => 'us21',
         ]);
 
-        try {
-            // Call the method to retrieve all lists
-            $response = $client->lists->getListMembersInfo("76cf69a4f6");
-            dd($response);
+        $response = $mainchimp->lists->addListMember("76cf69a4f6", [
+            'email_address' => 'maria@gmail.com',
+            'status' => 'subscribed'
+        ]);
 
-            // Return the response as JSON
-            return response()->json($response);
-        } catch (\Exception $e) {
-            // Handle any errors and return an error response
-            return response('Error: ' . $e->getMessage(), 500); // You can change the status code as needed
-        }
+        dd($response);
     });
 
     Route::get('/', [PostController::class, 'index'])->name('home');
