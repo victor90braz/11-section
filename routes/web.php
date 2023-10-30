@@ -17,7 +17,7 @@
 
         try {
             // Call the method to retrieve all lists
-            $response = $client->lists->getAllLists();
+            $response = $client->lists->getListMembersInfo("76cf69a4f6");
             dd($response);
 
             // Return the response as JSON
