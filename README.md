@@ -47,14 +47,4 @@ To use this project, follow these steps:
     ]
     ```
 
-Now, you're all set to use this Laravel project for Mailchimp integration.
-
-## Usage
-
-This Laravel application provides a seamless way to interact with the Mailchimp API, allowing you to manage your email marketing campaigns effectively.
-
-For more information on how to use this Laravel project for Mailchimp integration, please refer to the project's documentation or codebase.
-
-Feel free to explore, modify, and enhance this project as needed to meet your specific requirements.
-
-Happy coding! 🚀
+composer require mailchimp/marketing
