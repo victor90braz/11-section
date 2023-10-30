@@ -34,8 +34,7 @@ To use this project, follow these steps:
 
 5. Verify that your Mailchimp configuration is correctly loaded by running the following command in the Laravel Tinker:
 
-    ```php
-    tinker
+    ```php tinker
     > config('services.mailchimp')
     ```
 
@@ -48,3 +47,20 @@ To use this project, follow these steps:
     ```
 
 composer require mailchimp/marketing
+
+-   next steps
+
+-   link -> mailchimp.com/developer/marketing/guides/quick-start/
+-   Make your first API call
+
+            require_once('/path/to/MailchimpMarketing/vendor/autoload.php');
+
+            $mailchimp = new \MailchimpMarketing\ApiClient();
+
+            $mailchimp->setConfig([
+            'apiKey' => 'YOUR_API_KEY',
+            'server' => 'YOUR_SERVER_PREFIX'
+            ]);
+
+            $response = $mailchimp->ping->get();
+            print_r($response);
