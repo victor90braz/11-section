@@ -64,3 +64,8 @@ composer require mailchimp/marketing
 
             $response = $mailchimp->ping->get();
             print_r($response);
+
+# documentation
+
+-   https://mailchimp.com/developer/marketing/api/account-exports/
+-   https://mailchimp.com/developer/marketing/api/lists/
