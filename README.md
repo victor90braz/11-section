@@ -93,7 +93,7 @@ $response = $client->lists->getAllLists();
 dd($response);
 ```
 
-# README for the `Newsletter` Class
+# README for the `MailchimpNewsletter` Class
 
 ```php
 
@@ -101,7 +101,7 @@ namespace App\Services;
 
 use MailchimpMarketing\ApiClient;
 
-class Newsletter {
+class MailchimpNewsletter {
 
     public function subscribe(string $email, $list = null) {
 
@@ -126,19 +126,19 @@ class Newsletter {
 
 ## Using Dependency Injection
 
-Alternatively, you can utilize dependency injection to make your code more elegant and maintainable. Here's how to use the `Newsletter` class with dependency injection:
+Alternatively, you can utilize dependency injection to make your code more elegant and maintainable. Here's how to use the `MailchimpNewsletter` class with dependency injection:
 
 ```php
 
 namespace App\Http\Controllers;
 
-use App\Services\Newsletter;
+use App\Services\MailchimpNewsletter;
 use Exception;
 use Illuminate\Validation\ValidationException;
 
 class NewsletterController extends Controller
 {
-    public function __invoke(Newsletter $newsletter)
+    public function __invoke(MailchimpNewsletter $newsletter)
     {
         request()->validate(['email' => 'required|email']);
 
@@ -159,7 +159,7 @@ class NewsletterController extends Controller
 
 ## Integration in Laravel Routes
 
-To implement the `Newsletter` functionality in your Laravel routes, you can add the following route definition in your `routes/web.php` or `routes/api.php` file:
+To implement the `MailchimpNewsletter` functionality in your Laravel routes, you can add the following route definition in your `routes/web.php` or `routes/api.php` file:
 
 ```php
 Route::post('/newsletter', (NewsletterController::class));
