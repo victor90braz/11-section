@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
             return new MailchimpNewsletter($client);
-            // return new ConvertKitNewsletter($client);
+            // return new ConvertKitNewsletter();
 
         });
     }
