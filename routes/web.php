@@ -13,11 +13,9 @@
             'email' => 'required|email'
         ]);
 
-        $newsletter =  new Newsletter();
-
         try {
 
-            $newsletter->subscribe(request('email'));
+            (new Newsletter())->subscribe(request('email'));
 
             return redirect('/')->with('success', 'You are now signed up for our newsletter!');
 
