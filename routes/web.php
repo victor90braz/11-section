@@ -4,9 +4,8 @@
     use App\Http\Controllers\PostController;
     use App\Http\Controllers\RegisterController;
     use App\Http\Controllers\SessionController;
+    use App\Services\Newsletter;
     use Illuminate\Support\Facades\Route;
-    use MailchimpMarketing\ApiClient;
-use PhpParser\Node\Stmt\TryCatch;
 
     Route::post('/newsletter', function () {
 
@@ -14,20 +13,13 @@ use PhpParser\Node\Stmt\TryCatch;
             'email' => 'required|email'
         ]);
 
-        $mainchimp = new ApiClient();
-        $mainchimp->setConfig([
-            'apiKey' => config('services.mailchimp.key'),
-            'server' => 'us21',
-        ]);
+        $newsletter =  new Newsletter();
 
         try {
 
-            $mainchimp->lists->addListMember("76cf69a4f6", [
-                'email_address' => request('email'),
-                'status' => 'subscribed'
-            ]);
+            $newsletter->subscribe(request('email'));
 
-           return redirect('/')->with('success', 'You are now signed up for our newsletter!');
+            return redirect('/')->with('success', 'You are now signed up for our newsletter!');
 
         } catch(\Exception $error) {
 
